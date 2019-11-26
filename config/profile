@@ -1,10 +1,10 @@
-if [ -f .alias ]
+if [ -f ~/.alias.sh ]
 then
-	. .alias
+	source ~/.alias.sh
 fi
 
-if [ -f .gitalias ]
+if [ -f ~/.gitalias ]
 then
-	. .gitalias
+	source ~/.gitalias
 fi
 set -o vi

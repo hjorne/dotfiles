@@ -1,1 +1,3 @@
 alias vim=$'echo \'Dont use vim! Use nvim!\''
+alias sve='source venv/bin/activate'
+
