@@ -1,2 +1,9 @@
 alias vim=$'echo \'Dont use vim! Use nvim!\''
 alias sve='source venv/bin/activate'
+alias touchbar-reset='killall ControlStrip'
+alias tma='tmux attach -t default'
+alias gpf='ggpush --force'
+alias git-reset-everything='git clean -d -f && git reset --hard && gcm && gl'
+
+# Work related
+alias docker-db-up='docker run --env MYSQL_ROOT_PASSWORD=root -p 3306:3306 -v ~/developer/mysqlfiles:/var/lib/mysql docker-hub.docker.awstrp.net/mysql:5.7 --general-log=1 --general-log-file=/var/lib/mysql/general-log.log'
