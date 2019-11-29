@@ -1,5 +1,3 @@
-" Set hybrid line numbers (both relative and absolute line numbers
-" simultaneously
 set number relativenumber
 set nu rnu
 
@@ -10,4 +8,19 @@ set autowrite
 set expandtab 
 
 " 2 space indents
-set shiftwidth=2
+set shiftwidth=4
+
+" Get rid of second bar, lightline supercedes
+set noshowmode
+
+" Enable git branch to be on bar
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
