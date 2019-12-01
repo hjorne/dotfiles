@@ -21,4 +21,8 @@ Plug 'tpope/vim-surround'
 
 Plug 'enomsg/vim-haskellconcealplus'
 
+Plug 'junegunn/goyo.vim'
+
+Plug 'junegunn/limelight.vim'
+
 call plug#end()
