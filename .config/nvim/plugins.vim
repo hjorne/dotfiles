@@ -1,8 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-
+Plug 'scrooloose/nerdcommenter' 
 " Fuzzy Search
 Plug 'junegunn/fzf'
 
@@ -24,5 +23,7 @@ Plug 'enomsg/vim-haskellconcealplus'
 Plug 'junegunn/goyo.vim'
 
 Plug 'junegunn/limelight.vim'
+
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
