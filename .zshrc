@@ -36,3 +36,5 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 set -o vi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

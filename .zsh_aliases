@@ -4,6 +4,8 @@ alias touchbar-reset='killall ControlStrip'
 alias tma='tmux attach -t default'
 alias gpf='ggpush --force'
 alias git-reset-everything='git clean -d -f && git reset --hard && gcm && gl'
+alias java-reset='rm -rf .gradle .classpath .project .settings .idea'
 
 # Work related
 alias docker-db-up='docker run --env MYSQL_ROOT_PASSWORD=root -p 3306:3306 -v ~/developer/mysqlfiles:/var/lib/mysql docker-hub.docker.awstrp.net/mysql:5.7 --general-log=1 --general-log-file=/var/lib/mysql/general-log.log'
+alias unset-proxy='unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY all_proxy ALL_PROXY no_proxy NO_PROXY'

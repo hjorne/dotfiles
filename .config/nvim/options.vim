@@ -1,6 +1,8 @@
 set number relativenumber
 set nu rnu
 
+colorscheme gruvbox
+
 " Set automatic save on focus change
 set autowrite
 
@@ -24,3 +26,25 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+
+
+" Enable yank to system clipboard
+set clipboard=unnamed
+
+" Better java syntax highlighting
+let g:java_highlight_functions = 1
+
+" Set rainbow brackets enabled
+let g:rainbow_active = 1
+
+" Set folding to syntax for Coc
+set foldmethod=syntax
+
+" Disables folding by default when you open a file
+set nofoldenable
+
+" Set coc-status to status bar
+set statusline^=%{coc#status()}
+
+" Set true colors for neovim
+set termguicolors
