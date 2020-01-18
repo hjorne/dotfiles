@@ -7,6 +7,7 @@ if [ -f ~/.zsh_aliases ]; then
 	source ~/.zsh_aliases
 fi
 
+
 # Set name of the theme to load 
 ZSH_THEME="norm"
 
@@ -34,6 +35,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Set ZSH options
+unsetopt correct_all
 
 set -o vi
 
