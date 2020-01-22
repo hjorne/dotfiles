@@ -1,6 +1,7 @@
 {
     "http.proxy": "localhost:3128",
     "http.proxyStrictSSL": false,
+    "diagnostic.checkCurrentLine": true,
 
     "java.jdt.ls.vmargs": "-javaagent:/Users/trpgg87/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.2/524e0a697e9d62950b2f763d88d35cd8dc82a9a1/lombok-1.18.2.jar",
 

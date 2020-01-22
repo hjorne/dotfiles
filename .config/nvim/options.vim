@@ -1,6 +1,10 @@
+
+" Set both absolute and relative numbers. This enables
+" relative numbering but absolute on cursor
 set number relativenumber
 set nu rnu
 
+" Set color scheme
 colorscheme gruvbox
 
 " Set automatic save on focus change
@@ -48,3 +52,7 @@ set statusline^=%{coc#status()}
 
 " Set true colors for neovim
 set termguicolors
+
+" Set foldlevel so that not everything is open
+" when folds are enabled
+set foldlevel=99

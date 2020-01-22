@@ -17,5 +17,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'luochen1990/rainbow'
 Plug 'morhetz/gruvbox'
 Plug 'rbong/vim-flog'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
