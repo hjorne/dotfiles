@@ -7,6 +7,9 @@ set nu rnu
 " Set color scheme
 colorscheme gruvbox
 
+" Set gruvbox light mode
+set background=light
+
 " Set automatic save on focus change
 set autowrite
 

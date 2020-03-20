@@ -5,6 +5,7 @@ alias tma='tmux attach -t default'
 alias gpf='ggpush --force'
 alias git-reset-everything='git clean -d -f && git reset --hard && gcm && gl'
 alias java-reset='rm -rf .gradle .classpath .project .settings .idea'
+alias docker-postgres='docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres -v /Users/joe/Documents/engineering/db/postgres:/var/lib/postgresql/data postgres'
 
 # Work related
 alias docker-db-up='docker run --env MYSQL_ROOT_PASSWORD=root -p 3306:3306 -v ~/developer/mysqlfiles:/var/lib/mysql docker-hub.docker.awstrp.net/mysql:5.7 --general-log=1 --general-log-file=/var/lib/mysql/general-log.log'
