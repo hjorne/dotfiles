@@ -5,7 +5,7 @@ set number relativenumber
 set nu rnu
 
 " Set color scheme
-colorscheme gruvbox
+"colorscheme gruvbox
 
 " Set gruvbox light mode
 set background=light
