@@ -18,5 +18,7 @@ Plug 'luochen1990/rainbow'
 Plug 'morhetz/gruvbox'
 Plug 'rbong/vim-flog'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'vimwiki/vimwiki'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 call plug#end()
