@@ -25,6 +25,8 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
+let g:goyo_width=81
+
 "" Color name (:help cterm-colors) or ANSI code
 "let g:limelight_conceal_ctermfg = 'gray'
 "let g:limelight_conceal_ctermfg = 240

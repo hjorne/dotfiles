@@ -67,8 +67,10 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f  :<C-u>Format<CR>
+nmap <leader>f  :<C-u>Format<CR>
 
 augroup mygroup
   autocmd!

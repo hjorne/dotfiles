@@ -1,28 +1,25 @@
 {
-    "languageserver": {
-        "haskell": {
-            "command": "hie-wrapper",
-            "args": [
-                "--lsp"
-            ],
-            "rootPatterns": [
-                "*.cabal",
-                "stack.yaml",
-                "cabal.project",
-                "package.yaml"
-            ],
-            "filetypes": [
-                "hs",
-                "lhs",
-                "haskell"
-            ],
-            "initializationOptions": {
-                "languageServerHaskell": {
-                    "useCustomHieWrapper": true,
-                    "useCustomHieWrapperPath": "hie-wrapper",
-                    "hlintOn": true
-                }
-            }
+  "languageserver": {
+    "haskell": {
+      "command": "hie-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml"
+      ],
+      "filetypes": ["hs", "lhs", "haskell"],
+      "initializationOptions": {
+        "languageServerHaskell": {
+          "useCustomHieWrapper": true,
+          "useCustomHieWrapperPath": "hie-wrapper",
+          "hlintOn": true
         }
+      }
     }
+  },
+  "metals": {
+    "scalafmtConfigPath": "project/.scalafmt.conf"
+  }
 }

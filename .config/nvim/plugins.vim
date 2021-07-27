@@ -6,19 +6,20 @@ Plug 'usr/local/opt/fzf'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neovimhaskell/haskell-vim'  
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'enomsg/vim-haskellconcealplus'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'hashivim/vim-terraform'
 Plug 'luochen1990/rainbow'
 Plug 'morhetz/gruvbox'
 Plug 'rbong/vim-flog'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-sensible'
 
 call plug#end()

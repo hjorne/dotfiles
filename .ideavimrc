@@ -1,3 +1,7 @@
 set surround
+set easymotion
 set ideajoin
+set argtextobj
 set clipboard+=unnamed
+let mapleader = " "
+nnoremap <C-o> :action Back<CR>

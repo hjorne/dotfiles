@@ -39,6 +39,15 @@ source $ZSH/oh-my-zsh.sh
 # Set ZSH options
 unsetopt correct_all
 
+export EDITOR=nvim
+export GIT_EDITOR=nvim
+
 set -o vi
+
+# Allow for backwards search with hotkey in vi bindings
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
+source /usr/local/bin/z.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
