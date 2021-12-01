@@ -21,5 +21,6 @@
   },
   "metals": {
     "scalafmtConfigPath": "project/.scalafmt.conf"
-  }
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["scala"]
 }

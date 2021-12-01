@@ -1,7 +1,22 @@
+" Enable plugins
 set surround
 set easymotion
 set ideajoin
 set argtextobj
+
+" Set clipboard to copy to system clipboard
 set clipboard+=unnamed
+
+" Define bindings
 let mapleader = " "
-nnoremap <C-o> :action Back<CR>
+
+" Set relative line numbers
+set relativenumber
+set number     
+
+map <leader>rn <Action>(RenameElement)
+map <leader>fa <Action>(VimFindActionIdAction)
+map <leader>zn <Action>(ToggleZenMode)
+
+map <c-o> <Action>(Back)
+map <c-i> <Action>(Forward)

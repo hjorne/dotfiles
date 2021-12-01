@@ -15,8 +15,8 @@ tmap <silent> UU <C-\><C-n>
 "nnoremap <silent> ]B :blast<CR>
 
 nmap <silent> <Leader>gy :Goyo<CR>
-nmap <F3> i<C-R>=strftime("%a, %d %b %Y %I:%M %p")<CR><Esc>
-imap <F3> <C-R>=strftime("%a, %d %b %Y %I:%M %p")<CR>
+nmap <leader>dd a<C-R>=strftime("%a, %d %b %Y %I:%M %p")<CR><Esc>
+"imap <leader>dd <C-R>=strftime("%a, %d %b %Y %I:%M %p")<CR>
 map <leader>r :NERDTreeFind<cr>
 
 nnoremap <leader>gss :GitSessionSave<cr>

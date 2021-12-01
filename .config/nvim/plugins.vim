@@ -21,5 +21,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sensible'
+Plug 'LnL7/vim-nix'
 
 call plug#end()
