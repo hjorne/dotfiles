@@ -17,6 +17,7 @@ set number
 map <leader>rn <Action>(RenameElement)
 map <leader>fa <Action>(VimFindActionIdAction)
 map <leader>zn <Action>(ToggleZenMode)
+map <leader>gr <Action>(FindUsages)
 
 map <c-o> <Action>(Back)
 map <c-i> <Action>(Forward)
