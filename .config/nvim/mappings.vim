@@ -14,6 +14,11 @@ tmap <silent> UU <C-\><C-n>
 "nnoremap <silent> [B :bfirst<CR> 
 "nnoremap <silent> ]B :blast<CR>
 
+nnoremap <silent> <C-[> :bprevious<CR> 
+nnoremap <silent> <C-]> :bnext<CR> 
+"nnoremap <silent> [B :bfirst<CR> 
+"nnoremap <silent> ]B :blast<CR>
+
 nmap <silent> <Leader>gy :Goyo<CR>
 nmap <leader>dd a<C-R>=strftime("%a, %d %b %Y %I:%M %p")<CR><Esc>
 "imap <leader>dd <C-R>=strftime("%a, %d %b %Y %I:%M %p")<CR>
