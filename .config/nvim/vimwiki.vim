@@ -4,7 +4,7 @@ filetype plugin on
 syntax on
 
 " Set vimwiki syntax to markdown
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},{'path': '~/Dropbox/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Set auto-wrap text width to 80 when in markdown only
 au BufRead,BufNewFile *.md setlocal textwidth=80

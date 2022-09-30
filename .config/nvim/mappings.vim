@@ -14,8 +14,8 @@ tmap <silent> UU <C-\><C-n>
 "nnoremap <silent> [B :bfirst<CR> 
 "nnoremap <silent> ]B :blast<CR>
 
-nnoremap <silent> <C-[> :bprevious<CR> 
-nnoremap <silent> <C-]> :bnext<CR> 
+"nnoremap <silent> <C-[> :bprevious<CR> 
+"nnoremap <silent> <C-]> :bnext<CR> 
 "nnoremap <silent> [B :bfirst<CR> 
 "nnoremap <silent> ]B :blast<CR>
 

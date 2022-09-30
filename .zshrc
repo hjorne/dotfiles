@@ -48,6 +48,6 @@ set -o vi
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
-source /usr/local/bin/z.sh
+#source /usr/local/bin/z.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
