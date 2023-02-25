@@ -34,6 +34,8 @@ plugins=(
   git
 )
 
+export ZSH=$HOME/.oh-my-zsh
+
 source $ZSH/oh-my-zsh.sh
 
 # Set ZSH options
@@ -47,6 +49,11 @@ set -o vi
 # Allow for backwards search with hotkey in vi bindings
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(zoxide init zsh)"
+#any-nix-shell zsh --info-right | source /dev/stdin
+#eval "$(direnv hook zsh)"
 
 #source /usr/local/bin/z.sh
 

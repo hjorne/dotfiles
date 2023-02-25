@@ -22,11 +22,12 @@ Plug 'tpope/vim-sensible'
 Plug 'LnL7/vim-nix'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'dag/vim-fish'
+Plug 'mtdl9/vim-log-highlighting'
 
 
 " Themes
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 
 call plug#end()
