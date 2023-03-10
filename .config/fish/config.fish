@@ -16,12 +16,11 @@ end
 set fish_greeting
 
 # Set up path
-set -gx PATH $HOME/.local/bin "$HOME/.cargo/bin" /opt/homebrew/sbin /opt/homebrew/bin $PATH
+set -gx PATH $HOME/.local/bin "$HOME/.cargo/bin" /opt/homebrew/sbin /opt/homebrew/bin "/Users/joe/Library/Application Support/Coursier/bin" $PATH
 
 set -x PAGER bat
 
-# Added by ghcup
-#set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /Users/joe/.ghcup/bin $PATH # ghcup-env
+set -gx TERM screen-256color
 
 # Init zoxide
 zoxide init fish | source
