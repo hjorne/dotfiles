@@ -1,31 +1,28 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+set -gx PATH $HOME/.local/bin "$HOME/.cargo/bin" /opt/homebrew/sbin /opt/homebrew/bin $PATH
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
-end
+    zoxide init fish | source
 
-# Set vi mode
-fish_vi_key_bindings
+    fish_vi_key_bindings
 
-# Allow forward completion in vi-mode
-function fish_user_key_bindings
-    for mode in insert default visual
-        bind -M $mode \cf forward-char
+    # Allow forward completion in vi-mode
+    function fish_user_key_bindings
+        for mode in insert default visual
+            bind -M $mode \cf forward-char
+        end
     end
+
+    # Clear fish greeting
+    set fish_greeting
+
+    # Set up path
+
+    set -x PAGER bat
 end
 
-# Clear fish greeting
-set fish_greeting
 
-# Set up path
-set -gx PATH $HOME/.local/bin "$HOME/.cargo/bin" /opt/homebrew/sbin /opt/homebrew/bin "/Users/joe/Library/Application Support/Coursier/bin" $PATH
-
-set -x PAGER bat
-
-set -gx TERM screen-256color
-
-# Init zoxide
-zoxide init fish | source
-
-fzf_configure_bindings --directory=\ch
-fish_add_path /Users/joe/.spicetify
-
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /Users/joe/.ghcup/bin $PATH # ghcup-env
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/joe/Documents/google-cloud-sdk/path.fish.inc' ]; . '/Users/joe/Documents/google-cloud-sdk/path.fish.inc'; end
