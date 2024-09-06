@@ -1,0 +1,74 @@
+{
+  "window.commandCenter": 1,
+  "editor.fontSize": 13,
+  "editor.lineNumbers": "relative",
+  "python.analysis.inlayHints.variableTypes": true,
+  "editor.formatOnSave": true,
+  "redhat.telemetry.enabled": false,
+  "files.autoSave": "afterDelay",
+  "outline.collapseItems": "alwaysCollapse",
+  "files.autoSaveDelay": 50,
+  "vim.useSystemClipboard": true,
+  "mypy.runUsingActiveInterpreter": true,
+  "githubPullRequests.pullBranch": "never",
+  "python.terminal.activateEnvInCurrentTerminal": true,
+  "explorer.confirmDelete": false,
+  "cursor.aipreview.enabled": true,
+  "cursor.general.enableShadowWorkspace": true,
+  "workbench.editor.limit.enabled": true,
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "cursor.cpp.disabledLanguages": [],
+  "ruff.exclude": [],
+  "jupyter.askForKernelRestart": false,
+  "basedpyright.analysis.diagnosticSeverityOverrides": {
+    "reportUnknownArgumentType": false,
+    "reportUnknownVariableType": false,
+    "reportAny": false,
+    "reportUnhashable": false,
+    "reportImplicitOverride": false,
+    "reportMissingImports": false
+  },
+  "workbench.colorTheme": "Tokyo Night",
+  "editor.wordWrap": "on",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "circleci.hostUrl": "",
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "python.autoComplete.extraPaths": [],
+  "mypy-type-checker.cwd": "${workspaceFolder}/arkifi/src",
+  "python.analysis.extraPaths": [],
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "cursorpyright.analysis.extraPaths": [],
+  "cursorpyright.analysis.inlayHints.variableTypes": true,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "gitlens.views.commitDetails.files.layout": "list",
+  "gitlens.views.scm.grouped.views": {
+    "commits": true,
+    "branches": true,
+    "remotes": true,
+    "stashes": true,
+    "tags": true,
+    "worktrees": true,
+    "contributors": true,
+    "fileHistory": false,
+    "repositories": true,
+    "searchAndCompare": true,
+    "launchpad": false
+  }
+}

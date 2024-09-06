@@ -1,0 +1,33 @@
+" Enable plugins
+set surround
+set easymotion
+set ideajoin
+set argtextobj
+set nerdtree
+
+" Case insensitive search
+set ignorecase
+
+" Set clipboard to copy to system clipboard
+set clipboard+=unnamed
+
+" Define bindings
+let mapleader = " "
+
+" Set relative line numbers
+set relativenumber
+set number     
+
+" IJ provides IdeaVim: track action Ids command to show the id of the executed actions. This command can be found in "Search everywhere" (double shift).
+nmap <silent> <C-p> :NERDTreeToggle<CR>
+"map <leader>f :NERDTreeFind<CR>
+map <leader>rn <Action>(RenameElement)
+map <leader>fa <Action>(VimFindActionIdAction)
+map <leader>zn <Action>(ToggleZenMode)
+map <leader>gr <Action>(FindUsages)
+map <C-w>m <Action>(MoveEditorToOppositeTabGroup)
+map <C-w>\| <Action>(SplitVertically)
+map <C-w>- <Action>(SplitHorizontally)
+
+map <c-o> <Action>(Back)
+map <c-i> <Action>(Forward)

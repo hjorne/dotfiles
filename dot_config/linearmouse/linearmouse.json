@@ -1,0 +1,42 @@
+{
+  "schemes" : [
+    {
+      "if" : {
+        "device" : {
+          "productID" : "0xc099",
+          "category" : "mouse",
+          "productName" : "G502 X",
+          "vendorID" : "0x46d",
+          "serialNumber" : "207733624746"
+        }
+      },
+      "pointer" : {
+        "disableAcceleration" : false,
+        "speed" : 0.3,
+        "acceleration" : 0
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        }
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "productID" : "0xb023",
+          "vendorID" : "0x46d",
+          "productName" : "MX Master 3",
+          "serialNumber" : "28846A16B45141D2",
+          "category" : "mouse"
+        }
+      },
+      "pointer" : {
+        "speed" : 0.24,
+        "disableAcceleration" : false,
+        "acceleration" : 0
+      }
+    }
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5"
+}
