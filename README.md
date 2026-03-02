@@ -1,19 +1,96 @@
 # Dotfiles (chezmoi)
 
-This repo manages my personal/work dotfiles with [chezmoi](https://www.chezmoi.io/).
+This repo manages personal/work dotfiles with [chezmoi](https://www.chezmoi.io/).
 
-## Quick Setup
+## Fresh macOS Setup
 
-1. Install `chezmoi`.
-2. Initialize this repo on a machine:
+Use this on a brand-new machine.
+
+1. Install Xcode Command Line Tools.
+
 ```bash
-chezmoi init --apply <your-repo-url>
+xcode-select --install
 ```
-3. Set required data variables (below).
-4. Re-apply:
+
+2. Install Homebrew.
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+```
+
+3. Install base tooling used by these dotfiles.
+
+```bash
+brew install git chezmoi fish tmux neovim bat git-delta lazygit jq zoxide atuin pyenv fzf yt-dlp
+```
+
+4. Set Fish as the default shell.
+
+```bash
+which fish
+grep -q "$(which fish)" /etc/shells || echo "$(which fish)" | sudo tee -a /etc/shells
+chsh -s "$(which fish)"
+```
+
+5. Initialize chezmoi source and apply dotfiles.
+
+```bash
+chezmoi init <your-repo-url>
+```
+
+6. Set required chezmoi template data.
+
+Create `~/.config/chezmoi/chezmoi.toml`:
+
+```toml
+[data]
+git_name = "Your Name"
+git_email = "you@company.com"
+```
+
+7. Apply dotfiles.
+
 ```bash
 chezmoi apply
 ```
+
+8. Install Fisher and Fish plugins declared in `.config/fish/fish_plugins`.
+
+Open a new Fish shell, then run:
+
+```fish
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+fisher install (cat ~/.config/fish/fish_plugins)
+```
+
+9. Install tmux plugin manager (TPM) and tmux plugins.
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+Then start tmux and press `Ctrl-a` then `Shift-i` (capital `I`) to install plugins.
+This config uses `Ctrl-a` as tmux prefix.
+
+10. Bootstrap Neovim plugins.
+
+```bash
+nvim
+```
+
+`lazy.nvim` auto-installs on first launch. Quit and reopen once after install.
+
+11. Optional app login/bootstrap.
+
+- Atuin sync: `atuin login`
+- Cursor and VS Code settings are already managed by chezmoi at:
+  - `~/Library/Application Support/Cursor/User/settings.json`
+  - `~/Library/Application Support/Code/User/settings.json`
 
 ## Required chezmoi Data
 
@@ -22,19 +99,11 @@ chezmoi apply
 - `git_name`
 - `git_email`
 
-Set these in `~/.config/chezmoi/chezmoi.toml`:
-
-```toml
-[data]
-git_name = "Your Name"
-git_email = "you@company.com"
-```
-
 Optional machine-specific git overrides can go in:
 
 - `~/.gitconfig.local`
 
-This file is included by generated `.gitconfig`.
+That file is included by generated `~/.gitconfig`.
 
 ## Daily chezmoi Workflow
 
@@ -55,32 +124,36 @@ chezmoi add ~/.somefile
 chezmoi forget ~/.somefile
 ```
 
-## Machine-Specific Notes
+## Fish Policy
 
-- SSH 1Password agent is configured conditionally in `.ssh/config`.
-- `IdentityAgent` is applied only when the 1Password socket exists.
-- This is a portable pattern across machines that may or may not have 1Password installed.
-- `ForwardAgent yes` is currently global. This is convenient but broad. Consider changing to `ForwardAgent no` globally and enabling per-host if you want tighter security.
-- Cursor and VS Code user settings are both managed:
-- `~/Library/Application Support/Cursor/User/settings.json`
-- `~/Library/Application Support/Code/User/settings.json`
-
-## Fish Shell Policy
-
-Do not commit machine-generated fish files. This repo already ignores:
+Do not commit machine-generated Fish files. This repo ignores:
 
 - `.config/fish/fish_variables`
 - `.config/fish/config.fish-e`
 
-About `~/.config/fish/functions`:
+For `~/.config/fish/functions`:
 
-- Recommended: keep your custom functions in repo, but do not vendor third-party plugin functions.
-- Keep plugin declarations in `.config/fish/fish_plugins`, then install/update plugins on each machine with Fisher.
-- Vendoring plugin functions can work, but it causes churn and makes updates/reviews noisier.
+- Keep custom functions in repo.
+- Do not vendor third-party plugin function files.
+- Keep plugin declarations in `.config/fish/fish_plugins`.
 
-Plugin bootstrap on a new machine:
+## Machine-Specific Notes
 
-```fish
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
-fisher install (cat ~/.config/fish/fish_plugins)
-```
+- SSH 1Password agent is configured conditionally in `.ssh/config`.
+- `IdentityAgent` is applied only when the 1Password socket exists.
+- This keeps SSH config portable across machines with and without 1Password.
+- `ForwardAgent yes` is currently global in this repo. If you want tighter security, set it to `no` globally and enable per host.
+
+## Transferability Checklist
+
+When adding new dotfiles, avoid:
+
+- hardcoded usernames/paths (for example `/Users/<name>`)
+- machine IDs or hardware serials unless intentional
+- generated caches/history/session files
+- lock/state artifacts generated by tools
+
+If a file is machine-local:
+
+- keep it out of source state with `chezmoi forget`, or
+- template/guard machine-specific sections.
