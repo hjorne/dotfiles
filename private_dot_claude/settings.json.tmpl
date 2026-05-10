@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "darwin" }}
 {
   "model": "opus",
   "hooks": {
@@ -34,3 +35,8 @@
   },
   "alwaysThinkingEnabled": true
 }
+{{- else }}
+{
+  "alwaysThinkingEnabled": true
+}
+{{- end }}

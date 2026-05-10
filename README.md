@@ -1,111 +1,95 @@
 # Dotfiles (chezmoi)
 
-This repo manages personal/work dotfiles with [chezmoi](https://www.chezmoi.io/).
+Personal/work dotfiles managed with [chezmoi](https://www.chezmoi.io/), with a bootstrap script for macOS and Ubuntu.
 
-## Fresh macOS Setup
+## Bootstrap
 
-Use this on a brand-new machine.
-
-1. Install Xcode Command Line Tools.
+Run from a cloned copy of this repo:
 
 ```bash
-xcode-select --install
+cd ~/dotfiles
+./bootstrap.sh --dry-run
+./bootstrap.sh
 ```
 
-2. Install Homebrew.
+The script detects macOS or Ubuntu, installs required terminal tools, initializes chezmoi with this repo as the source, previews changes with `chezmoi diff`, applies them after confirmation, installs terminal plugins, and offers to change the login shell to Fish.
+
+### Safety
+
+- Privileged and persistent actions prompt before running.
+- `--yes` accepts package, plugin, and chezmoi prompts, but `chsh` still asks explicitly.
+- `--dry-run` prints planned actions without changing the system.
+- Run the script as your normal user, not with `sudo`; it uses `sudo` only where needed.
+- Existing chezmoi configs pointing at another source directory cause an error instead of being overwritten.
+- The script does not run destructive cleanup commands.
+
+### Options
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-if [ -x /opt/homebrew/bin/brew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [ -x /usr/local/bin/brew ]; then
-  eval "$(/usr/local/bin/brew shellenv)"
-fi
+./bootstrap.sh --dry-run
+./bootstrap.sh --yes
+./bootstrap.sh --skip-packages
+./bootstrap.sh --skip-chezmoi-apply
+./bootstrap.sh --skip-plugins
+./bootstrap.sh --skip-chsh
 ```
 
-3. Install base tooling used by these dotfiles.
+## What Bootstrap Installs
+
+### macOS
+
+- Verifies Xcode Command Line Tools.
+- Offers to install Homebrew if missing.
+- Installs with Homebrew:
 
 ```bash
-brew install git chezmoi fish tmux neovim bat git-delta lazygit jq zoxide atuin pyenv fzf yt-dlp
+git chezmoi fish tmux neovim bat git-delta lazygit jq zoxide atuin pyenv fzf yt-dlp
 ```
 
-4. Set Fish as the default shell.
+### Ubuntu
+
+- Verifies `/etc/os-release` reports Ubuntu.
+- Installs apt packages:
 
 ```bash
-which fish
-grep -q "$(which fish)" /etc/shells || echo "$(which fish)" | sudo tee -a /etc/shells
-chsh -s "$(which fish)"
+git curl fish tmux neovim bat git-delta lazygit jq zoxide atuin pyenv fzf yt-dlp
 ```
 
-5. Initialize chezmoi source and apply dotfiles.
+- Installs chezmoi into `~/.local/bin` with the official installer if `chezmoi` is not already available.
 
-```bash
-chezmoi init <your-repo-url>
-```
+## Chezmoi Data
 
-6. Set required chezmoi template data.
-
-Create `~/.config/chezmoi/chezmoi.toml`:
-
-```toml
-[data]
-git_name = "Your Name"
-git_email = "you@company.com"
-```
-
-7. Apply dotfiles.
-
-```bash
-chezmoi apply
-```
-
-8. Install Fisher and Fish plugins declared in `.config/fish/fish_plugins`.
-
-Open a new Fish shell, then run:
-
-```fish
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
-fisher install (cat ~/.config/fish/fish_plugins)
-```
-
-9. Install tmux plugin manager (TPM) and tmux plugins.
-
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
-Then start tmux and press `Ctrl-a` then `Shift-i` (capital `I`) to install plugins.
-This config uses `Ctrl-a` as tmux prefix.
-
-10. Bootstrap Neovim plugins.
-
-```bash
-nvim
-```
-
-`lazy.nvim` auto-installs on first launch. Quit and reopen once after install.
-
-11. Optional app login/bootstrap.
-
-- Atuin sync: `atuin login`
-- Cursor and VS Code settings are already managed by chezmoi at:
-  - `~/Library/Application Support/Cursor/User/settings.json`
-  - `~/Library/Application Support/Code/User/settings.json`
-
-## Required chezmoi Data
-
-`dot_gitconfig.tmpl` expects:
+The repo includes `.chezmoi.toml.tmpl`. On first `chezmoi init`, it prompts for:
 
 - `git_name`
 - `git_email`
 
+These values are stored in `~/.config/chezmoi/chezmoi.toml` and used by `~/.gitconfig`.
+
 Optional machine-specific git overrides can go in:
 
-- `~/.gitconfig.local`
+```text
+~/.gitconfig.local
+```
 
-That file is included by generated `~/.gitconfig`.
+## Post-Apply Setup
 
-## Daily chezmoi Workflow
+Bootstrap also handles:
+
+- Fisher and Fish plugins from `~/.config/fish/fish_plugins`
+- tmux plugin manager at `~/.tmux/plugins/tpm`
+- Neovim plugin sync with `nvim --headless '+Lazy! sync' +qa`
+- Optional Fish login shell setup
+
+Open tmux and press `Ctrl-a` then `Shift-i` to install tmux plugins after TPM is installed.
+
+Atuin sync is still manual:
+
+```bash
+atuin login
+```
+
+## Daily Chezmoi Workflow
 
 ```bash
 # see drift
@@ -124,6 +108,14 @@ chezmoi add ~/.somefile
 chezmoi forget ~/.somefile
 ```
 
+## Portability Notes
+
+- macOS app settings under `~/Library/...` and LinearMouse config are ignored on Linux.
+- Claude notification hooks that use `osascript` and `afplay` are macOS-only.
+- SSH 1Password agent config is macOS-only; `ForwardAgent yes` remains global.
+- Git `delta` config is only rendered when `delta` exists on `PATH`.
+- Fish uses `bat`, then `batcat`, then `less` for `PAGER`.
+
 ## Fish Policy
 
 Do not commit machine-generated Fish files. This repo ignores:
@@ -137,23 +129,13 @@ For `~/.config/fish/functions`:
 - Do not vendor third-party plugin function files.
 - Keep plugin declarations in `.config/fish/fish_plugins`.
 
-## Machine-Specific Notes
-
-- SSH 1Password agent is configured conditionally in `.ssh/config`.
-- `IdentityAgent` is applied only when the 1Password socket exists.
-- This keeps SSH config portable across machines with and without 1Password.
-- `ForwardAgent yes` is currently global in this repo. If you want tighter security, set it to `no` globally and enable per host.
-
 ## Transferability Checklist
 
-When adding new dotfiles, avoid:
+When adding dotfiles, avoid:
 
-- hardcoded usernames/paths (for example `/Users/<name>`)
+- hardcoded usernames/paths such as `/Users/<name>`
 - machine IDs or hardware serials unless intentional
 - generated caches/history/session files
 - lock/state artifacts generated by tools
 
-If a file is machine-local:
-
-- keep it out of source state with `chezmoi forget`, or
-- template/guard machine-specific sections.
+If a file is machine-local, keep it out of source state with `chezmoi forget`, or template/guard machine-specific sections.

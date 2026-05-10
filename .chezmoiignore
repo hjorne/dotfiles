@@ -1,3 +1,21 @@
 # Machine-generated and editor-backup Fish files should stay local.
 .config/fish/fish_variables
 .config/fish/config.fish-e
+
+# Repo-only files should not be applied into $HOME.
+README.md
+bootstrap.sh
+scripts/
+scripts/**
+.agents/
+.agents/**
+.codex/
+.codex/**
+
+{{ if ne .chezmoi.os "darwin" }}
+# macOS-only application and device configuration.
+Library/
+Library/**
+.config/linearmouse/
+.config/linearmouse/**
+{{ end }}

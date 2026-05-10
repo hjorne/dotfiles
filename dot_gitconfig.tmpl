@@ -7,6 +7,7 @@
 
 [core]
 	autocrlf = input
+{{ if lookPath "delta" }}
     pager = delta
 
 [interactive]
@@ -18,6 +19,7 @@
     # delta detects terminal colors automatically; set one of these to disable auto-detection
     # dark = true
     # light = true
+{{ end }}
 
 [merge]
     conflictstyle = diff3

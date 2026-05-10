@@ -33,9 +33,14 @@ if status is-interactive
     # Clear fish greeting
     set fish_greeting
 
-    # Set up path
+    if type -q bat
+        set -x PAGER bat
+    else if type -q batcat
+        set -x PAGER batcat
+    else
+        set -x PAGER less
+    end
 
-    set -x PAGER bat
     set -x EDITOR nvim
 end
 
