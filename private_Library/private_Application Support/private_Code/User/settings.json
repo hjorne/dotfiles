@@ -33,7 +33,7 @@
   "workbench.colorTheme": "Tokyo Night",
   "editor.wordWrap": "on",
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
@@ -70,5 +70,7 @@
     "repositories": true,
     "searchAndCompare": true,
     "launchpad": false
-  }
+  },
+  "editor.minimap.enabled": false,
+  "aws.cloudformation.telemetry.enabled": false
 }

@@ -1,42 +1,72 @@
 {
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5",
   "schemes" : [
     {
       "if" : {
         "device" : {
-          "productID" : "0xc099",
-          "category" : "mouse",
-          "productName" : "G502 X",
+          "serialNumber" : "207733624746",
           "vendorID" : "0x46d",
-          "serialNumber" : "207733624746"
+          "productID" : "0xc099",
+          "productName" : "G502 X",
+          "category" : "mouse"
         }
-      },
-      "pointer" : {
-        "disableAcceleration" : false,
-        "speed" : 0.3,
-        "acceleration" : 0
       },
       "scrolling" : {
         "acceleration" : {
           "vertical" : 1
         }
+      },
+      "pointer" : {
+        "disableAcceleration" : false,
+        "acceleration" : 0,
+        "speed" : 0.3
       }
     },
     {
       "if" : {
         "device" : {
-          "productID" : "0xb023",
-          "vendorID" : "0x46d",
-          "productName" : "MX Master 3",
           "serialNumber" : "28846A16B45141D2",
+          "vendorID" : "0x46d",
+          "productID" : "0xb023",
+          "productName" : "MX Master 3",
           "category" : "mouse"
         }
       },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 0,
+          "horizontal" : 1
+        },
+        "speed" : {
+          "vertical" : 75
+        }
+      },
       "pointer" : {
-        "speed" : 0.24,
         "disableAcceleration" : false,
-        "acceleration" : 0
+        "acceleration" : 0,
+        "speed" : 0.25
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "serialNumber" : "207538725847",
+          "vendorID" : "0x46d",
+          "productID" : "0xc099",
+          "productName" : "G502 X",
+          "category" : "mouse"
+        }
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        }
+      },
+      "pointer" : {
+        "disableAcceleration" : false,
+        "acceleration" : 0,
+        "speed" : 0.3
       }
     }
-  ],
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5"
+  ]
 }
