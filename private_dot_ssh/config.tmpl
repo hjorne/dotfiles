@@ -1,12 +1,11 @@
 Host *
     ForwardAgent yes
+
 {{ if eq .chezmoi.os "darwin" }}
 
 # Use the 1Password SSH agent only when its socket exists on this machine.
 Match host * exec "test -S \"$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\""
     IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-
-{{ end }}
 
 Host forge
   HostName forge
@@ -19,3 +18,5 @@ Host forge-tmux
   ForwardAgent yes
   RequestTTY force
   RemoteCommand tmux new-session -A -s main
+
+{{ end }}
